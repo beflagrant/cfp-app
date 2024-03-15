@@ -30,3 +30,5 @@ module CFPApp
       [Symbol, Hash, Array, ActiveSupport::HashWithIndifferentAccess]
   end
 end
+
+

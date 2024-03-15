@@ -96,17 +96,12 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
   config.action_mailer.default_options = { from: ENV['MAIL_FROM'] }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    address: ENV.fetch('SMTP_ADDRESS', 'smtp.sendgrid.net'),
-    port: ENV.fetch('SMTP_PORT', '587'),
-    authentication: :plain,
-    user_name: ENV.fetch('SMTP_USERNAME', 'apikey'),
-    password: ENV.fetch('SMTP_PASSWORD', ENV.fetch('SENDGRID_API_KEY', "")),
-    domain: ENV.fetch('SMTP_DOMAIN', 'heroku.com'),
-    enable_starttls_auto: true
+  config.action_mailer.delivery_method = :postmark
+
+  config.action_mailer.postmark_settings = {
+    api_token: ENV["POSTMARK_API_TOKEN"]
   }
+  config.action_mailer.perform_deliveries = true
 
   config.exceptions_app = routes
 

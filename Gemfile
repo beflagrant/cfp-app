@@ -67,6 +67,7 @@ gem 'sendgrid-ruby'
 group :production do
   gem 'aws-sdk-s3'
   gem 'rack-timeout', '~> 0.6'
+  gem 'postmark-rails'
 end
 
 group :development do
